@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 7 feb 2022 13:39:47 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="ad_tarea3" dynamic-insert="false" dynamic-update="false" mutable="true" name="clases.Vuelos" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="vuelos">
+        <id name="codVuelo" type="string">
+            <column length="10" name="COD_VUELO"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="horaSalida" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="HORA_SALIDA"/>
+        </property>
+        <property generated="never" lazy="false" name="destino" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="DESTINO"/>
+        </property>
+        <property generated="never" lazy="false" name="procedencia" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="PROCEDENCIA"/>
+        </property>
+        <property generated="never" lazy="false" name="plazasFumador" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="PLAZAS_FUMADOR"/>
+        </property>
+        <property generated="never" lazy="false" name="plazasNoFumador" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="PLAZAS_NO_FUMADOR"/>
+        </property>
+        <property generated="never" lazy="false" name="plazasTurista" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="PLAZAS_TURISTA"/>
+        </property>
+        <property generated="never" lazy="false" name="plazasPrimera" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="PLAZAS_PRIMERA"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="pasajeroses" optimistic-lock="true" sort="unsorted" table="pasajeros">
+            <key on-delete="noaction">
+                <column length="10" name="COD_VUELO" not-null="true"/>
+            </key>
+            <one-to-many class="clases.Pasajeros" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
